@@ -77,7 +77,7 @@ define("util/ob", ["jquery"], function(a) {
       , wa = R + W + Q + V //join
       , xa = U + I + S + M + r + Y + Y + I + da //makeArray
       , ya = function() {
-        return a[xa](arguments)[wa](e) //a[makeArray]()[join]("")
+        return a[xa](arguments)[wa](e) //jquery.makeArray(arguments).join("")
     }
       , za = ya(T, M, V, O, $, P) //length
       , Aa = {};
@@ -88,16 +88,23 @@ define("util/ob", ["jquery"], function(a) {
     // type = POST
     Aa[ya($, da, X, M)] = ya(A, z, B, C);
     var Ba = function(c, d) {
-        c = c || e,
+        // Ba: reportAjax 
+		// c: url
+		// d: data
+		c = c || e,
         d = d || {},
-        // d, Game, userId
+        // u, Game, userId
         d[ya(_)] = b[ya(u, I, U, M)][ya(_, Z, M, Y, v, L)];
-        var f = ya(W, J, l) + c;
-        Aa[ya(L, I, $, I)] = b[ya(w, B, z, y)][ya(Z, $, Y, Q, V, O, Q, N, da)](d),
+        // ob/+ 
+		var f = ya(W, J, l) + c;
+        // data, JSON, stringify
+		Aa[ya(L, I, $, I)] = b[ya(w, B, z, y)][ya(Z, $, Y, Q, V, O, Q, N, da)](d),
+		// url, Game, baseUri
         Aa[ya(_, Y, T)] = b[ya(u, I, U, M)][ya(J, I, Z, M, D, Y, Q)] + f,
-        a[ya(I, R, I, ca)](Aa)
+        //jQuery.ajax
+		a[ya(I, R, I, ca)](Aa)
     }
-      , Ca = b[ya(Z, M, $, C, Q, U, M, W, _, $)]
+      , Ca = b[ya(Z, M, $, C, Q, U, M, W, _, $)] //setTimeout
       , Da = c
       , Ea = {}
       , Fa = function(a) {
@@ -130,28 +137,29 @@ define("util/ob", ["jquery"], function(a) {
         Ca(e, b)
     };
     !function() {
-        var a = ya(ca)
-          , e = ya($, I, X)
-          , g = ya(da)
-          , i = ya($, da, X, M)
-          , j = b[ya(s, I, $, M)][ya(V, W, ba)]
+        var a = ya(ca) //x
+          , e = ya($, I, X) tap
+          , g = ya(da) //y
+          , i = ya($, da, X, M) // type
+          , j = b[ya(s, I, $, M)][ya(V, W, ba)] //Date, now
           , k = c
           , l = j();
+		  // #wrapper, 'mousedown mouseup touchstart touchend tap'
         Ga(ea, ya(h, ba, Y, I, X, X, M, Y), ya(U, W, _, Z, M, L, W, ba, V, f, U, W, _, Z, M, _, X, f, $, W, _, K, P, Z, $, I, Y, $, f, $, W, _, K, P, M, V, L, f, $, I, X), function(b) {
             return b[i] === e ? k = (b[a] || b[g]) && j() - l < ra ? c : k + d : l = j(),
             k > n
         })
     }(),
     function() {
-        var a = ya(C, Q, K, S, M, Y)
-          , c = ya(n, o)
-          , d = ya(K, Y, M, I, $, M, R, Z)
-          , e = ya(O, M, $, t, A, B);
+        var a = ya(C, Q, K, S, M, Y) //Ticker
+          , c = ya(n, o) //35
+          , d = ya(K, Y, M, I, $, M, R, Z) // createjs
+          , e = ya(O, M, $, t, A, B); // getFPS
         Ha(ga, ra, sa, function() {
             return b[d] && b[d][a] && b[d][a][e] && b[d][a][e]() > c
         });
-        var f = ya(Z, M, $, v, V, $, M, Y, aa, I, T)
-          , g = ya(O, M, $, v, V, $, M, Y, aa, I, T);
+        var f = ya(Z, M, $, v, V, $, M, Y, aa, I, T) //setInterval
+          , g = ya(O, M, $, v, V, $, M, Y, aa, I, T); //getInterval
         Ha(ha, ra, sa, function() {
             if (b[d] && b[d][a] && b[d][a][e] && b[d][a][g] && b[d][a][f]) {
                 var c = b[d][a][e]()
@@ -165,59 +173,71 @@ define("util/ob", ["jquery"], function(a) {
         })
     }(),
     function() {
+		// Detect viramate
+		//'script[src^="chrome-extension://fgpokpknehglcioijejfeebigdnbnokj"],link[href^="chrome-extension://fgpokpknehglcioijejfeebigdnbnokj"]'
         var b = ya(Z, K, Y, Q, X, $, E, Z, Y, K, G, q, g, K, P, Y, W, U, M, k, M, ca, $, M, V, Z, Q, W, V, p, l, l, N, O, X, W, S, X, S, V, M, P, O, T, K, Q, W, Q, R, M, R, N, M, M, J, Q, O, L, V, J, V, W, S, R, g, F, j, T, Q, V, S, E, P, Y, M, N, G, q, g, K, P, Y, W, U, M, k, M, ca, $, M, V, Z, Q, W, V, p, l, l, N, O, X, W, S, X, S, V, M, P, O, T, K, Q, W, Q, R, M, R, N, M, M, J, Q, O, L, V, J, V, W, S, R, g, F);
         Ha(ia, sa, va, function() {
             return a(b)[za]
         })
     }(),
     function() {
+		//[id^=mkt_],[class^=mkt_]
         var b = ya(E, Q, L, G, q, U, S, $, H, F, j, E, K, T, I, Z, Z, G, q, U, S, $, H, F);
         Ha(ja, sa, va, function() {
             return a(b)[za]
         })
     }(),
     function() {
+		//[id^=gbfTool]
         var b = ya(E, Q, L, G, q, O, J, N, C, W, W, T, F);
         Ha(ka, ra, ta, function() {
             return a(b)[za]
         })
     }(),
     function() {
-        var b = ya(Z, K, Y, Q, X, $, E, Q, L, G, q, O, N, M, H, F);
+        //script[id^=gfe_]
+		var b = ya(Z, K, Y, Q, X, $, E, Q, L, G, q, O, N, M, H, F);
         Ha(la, ua, va, function() {
             return a(b)[za]
         })
     }(),
     function() {
+		//[id^=guraburu]
         var b = ya(E, Q, L, G, q, O, _, Y, I, J, _, Y, _, F);
         Ha(ma, ra, ta, function() {
             return a(b)[za]
         })
     }(),
     function() {
+		//'script[id^=tke_]
         var b = ya(Z, K, Y, Q, X, $, E, Q, L, G, q, $, S, M, H, F);
         Ha(na, ua, va, function() {
             return a(b)[za]
         })
     }(),
     function() {
+		//input[id*=boss_mode_1]
         var b = ya(Q, V, X, _, $, E, Q, L, i, q, J, W, Z, Z, H, U, W, L, M, H, m, F);
         Ha(oa, ra, ta, function() {
             return a(b)[za]
         })
     }(),
     function() {
+		//input[id*=temporary_small]
         var b = ya(Q, V, X, _, $, E, Q, L, i, q, $, M, U, X, W, Y, I, Y, da, H, Z, U, I, T, T, F);
         Ha(oa, ra, ta, function() {
             return a(b)[za]
         })
     }(),
     function() {
-        var a = (b[ya(x, I, $, P)][ya(N, T, W, W, Y)],
-        b[ya(x, I, $, P)][ya(Y, I, V, L, W, U)],
-        b[ya(T, W, K, I, $, Q, W, V)][ya(P, I, Z, P)][ya(Z, X, T, Q, $)](l)[c]);
+        // Math,floor
+		var a = (b[ya(x, I, $, P)][ya(N, T, W, W, Y)],
+        // Math, random
+		b[ya(x, I, $, P)][ya(Y, I, V, L, W, U)],
+        // location, hash, split
+		b[ya(T, W, K, I, $, Q, W, V)][ya(P, I, Z, P)][ya(Z, X, T, Q, $)](l)[c]);
         Ha(fa, pa, c, function() {
-            return a !== ya(L, M, J, _, O)
+            return a !== ya(L, M, J, _, O) //debug
         })
     }()
 });
